@@ -16,20 +16,20 @@ public class ArrayStorage {
     }
 
     public Resume get(String uuid) {
-        int i = getIndex(uuid);
-        if (i == -1) {
+        int index = getIndex(uuid);
+        if (index == -1) {
             System.out.println("Резюме " + uuid + " нет!");
             return null;
         }
-        return storage[i];
+        return storage[index];
     }
 
     public void delete(String uuid) {
-        int i = getIndex(uuid);
-        if (i == -1) {
+        int index = getIndex(uuid);
+        if (index == -1) {
             System.out.println("Резюме " + uuid + " нет!");
         } else {
-            storage[i] = storage[size - 1];
+            storage[index] = storage[size - 1];
             storage[size - 1] = null;
             size--;
         }
@@ -49,18 +49,16 @@ public class ArrayStorage {
 
     public Resume[] getAll() {
         Resume[] result = new Resume[size];
-        for (int i = 0; i < size; i++) {
-            result[i] = storage[i];
-        }
+        System.arraycopy(storage, 0, result, 0, size);
         return result;
     }
 
     public void update(Resume r) {
-        int i = getIndex(r.getUuid());
-        if (i == -1) {
+        int index = getIndex(r.getUuid());
+        if (index == -1) {
             System.out.println("Резюме " + r.getUuid() + " нет!");
         } else {
-            storage[i] = r;
+            storage[index] = r;
         }
     }
 
