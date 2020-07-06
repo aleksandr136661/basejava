@@ -4,7 +4,7 @@ import ru.javawebinar.basejava.model.Resume;
 
 public class ArrayStorage extends AbstractArrayStorage {
 
-    protected void fillDeletedElement(int index) {
+    protected void delElement(int index) {
         storage[index] = storage[size - 1];
     }
 

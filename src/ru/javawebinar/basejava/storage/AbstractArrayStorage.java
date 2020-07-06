@@ -10,7 +10,7 @@ public abstract class AbstractArrayStorage implements Storage {
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
     protected int size = 0;
 
-    protected abstract void element(Resume r, int index);
+    protected abstract void insertElement(Resume r, int index);
 
     protected abstract void delElement(int index);
 
@@ -37,7 +37,7 @@ public abstract class AbstractArrayStorage implements Storage {
         } else if (size == STORAGE_LIMIT) {
             System.out.println("Storage overflow");
         } else {
-            element(r, index);
+            insertElement(r, index);
             size++;
         }
     }
