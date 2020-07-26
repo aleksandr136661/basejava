@@ -2,6 +2,8 @@ package ru.javawebinar.basejava.storage;
 
 import ru.javawebinar.basejava.model.Resume;
 
+import java.util.List;
+
 public interface Storage {
 
     void clear();
@@ -17,4 +19,6 @@ public interface Storage {
     Resume[] getAll();
 
     int size();
+
+    List<Resume> getAllSorted();
 }
