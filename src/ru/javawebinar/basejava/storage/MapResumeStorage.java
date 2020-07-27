@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapResume extends AbstractStorage {
+public class MapResumeStorage extends AbstractStorage {
     private Map<String, Resume> map = new HashMap<>();
 
     @Override
@@ -43,11 +43,6 @@ public class MapResume extends AbstractStorage {
     @Override
     public void clear() {
         map.clear();
-    }
-
-    @Override
-    public Resume[] getAll() {
-        return new Resume[0];
     }
 
     @Override

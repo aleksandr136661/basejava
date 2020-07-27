@@ -11,9 +11,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-
 public abstract class AbstractStorageTest {
-    protected Storage storage;
+    Storage storage;
 
     private static final String UUID_1 = "uuid1";
     private static final String UUID_2 = "uuid2";
@@ -71,7 +70,7 @@ public abstract class AbstractStorageTest {
     public void getAllSorted() throws Exception {
         List<Resume> list = storage.getAllSorted();
         assertEquals(3, list.size());
-        assertEquals(list, Arrays.asList(RESUME_1, RESUME_2, RESUME_3));
+        assertEquals(list, Arrays.asList(RESUME_3, RESUME_2, RESUME_1));
     }
 
     @Test

@@ -22,9 +22,4 @@ public class ArrayStorage extends AbstractArrayStorage {
         }
         return -1;
     }
-
-    @Override
-    public Resume[] getAll() {
-        return new Resume[0];
-    }
 }

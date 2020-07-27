@@ -4,7 +4,7 @@ import ru.javawebinar.basejava.model.Resume;
 
 import java.util.*;
 
-public class MapStorage extends AbstractStorage {
+public class MapUuidStorage extends AbstractStorage {
     private Map<String, Resume> map = new HashMap<>();
 
     @Override
@@ -40,11 +40,6 @@ public class MapStorage extends AbstractStorage {
     @Override
     public void clear() {
         map.clear();
-    }
-
-    @Override
-    public Resume[] getAll() {
-        return new Resume[0];
     }
 
     @Override
