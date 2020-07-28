@@ -48,6 +48,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         size--;
     }
 
+    @Override
     public Resume doGet(Object index) {
         return storage[(Integer) index];
     }
