@@ -83,7 +83,7 @@ public class PathStorage extends AbstractStorage<Path> {
         try {
             Files.delete(path);
         } catch (IOException e) {
-            throw new StorageException("Path delete error", getFileName(path), e);
+            throw new StorageException("Path delete error", getFileName(path),e);
         }
     }
 
