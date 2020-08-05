@@ -1,8 +1,11 @@
 package ru.javawebinar.basejava.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Link {
+public class Link implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private final String name;
     private final String url;
 
@@ -33,8 +36,7 @@ public class Link {
         Link link = (Link) o;
 
         if (!name.equals(link.name)) return false;
-        if (url != null) return url.equals(link.url);
-        return link.url == null;
+        return url != null ? url.equals(link.url) : link.url == null;
 
     }
 
