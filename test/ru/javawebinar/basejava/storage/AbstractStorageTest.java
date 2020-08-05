@@ -8,11 +8,14 @@ import ru.javawebinar.basejava.model.*;
 import static ru.javawebinar.basejava.ResumeTestData.getResume;
 import java.util.Arrays;
 import java.util.List;
+import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 
 
 public abstract class AbstractStorageTest {
+    protected static final File STORAGE_DIR = new File("C:\\projects\\basejava\\storage");
+
     protected Storage storage;
 
     private static final String UUID_1 = "uuid1";
