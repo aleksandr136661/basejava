@@ -29,10 +29,8 @@ public class FileStorage extends AbstractStorage<File> {
 
     @Override
     public void clear() {
-        if (getFiles() != null) {
-            for (File file : getFiles()) {
-                doDelete(file);
-            }
+        for (File file : getFiles()) {
+            doDelete(file);
         }
     }
 
@@ -96,7 +94,6 @@ public class FileStorage extends AbstractStorage<File> {
 
     @Override
     protected List<Resume> doCopyAll() {
-        getFiles();
         List<Resume> list = new ArrayList<>(getFiles().length);
         for (File file : getFiles()) {
             list.add(doGet(file));
