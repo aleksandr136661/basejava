@@ -2,20 +2,20 @@ package ru.javawebinar.basejava;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Number {
 
     public static void main(String[] args) {
-        List <Integer> listInt = Arrays.asList(5,7,8,3,2,5);
-        List <Integer> result = listInt.stream().reduce(0, (a, b) -> a + b)%2 == 0 ?
-                oddOrEven(listInt, p->p%2==0) : oddOrEven(listInt, p->p%2!=0);
-        System.out.println(result);
+        System.out.println (oddOrEven(Arrays.asList (8,9)));
+}
+    public static List<Integer> oddOrEven(List<Integer> integers) {
+        Map<Boolean,List<Integer>>
+                oddsAndEvens = integers.stream()
+                .collect(Collectors.partitioningBy(i->i%2==0));
+        return oddsAndEvens.get(false).size() % 2 == 0 ?
+                oddsAndEvens.get(false) :
+                oddsAndEvens.get(true);
     }
-
-    private static List <Integer> oddOrEven(List <Integer> listInt, Predicate <Integer> predicate) {
-        return listInt.stream().filter(predicate).collect(Collectors.toList());
-    }
-
 }
