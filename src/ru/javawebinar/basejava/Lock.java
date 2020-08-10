@@ -2,7 +2,7 @@ package ru.javawebinar.basejava;
 
 public class Lock {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         final String lock1 = "lock1";
         final String lock2 = "lock2";
         deadLock(lock1, lock2);
