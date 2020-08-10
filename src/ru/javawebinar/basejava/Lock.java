@@ -1,8 +1,6 @@
 package ru.javawebinar.basejava;
 
 public class Lock {
-    private static final Object LOCK = new Object();
-    private static java.lang.Object Object;
 
     public static void main(String[] args) throws InterruptedException {
         final String lock1 = "lock1";
