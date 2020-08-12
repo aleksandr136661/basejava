@@ -6,6 +6,7 @@ import ru.javawebinar.basejava.Config;
 import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
+import ru.javawebinar.basejava.model.ContactType;
 
 import java.io.File;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public abstract class AbstractStorageTest {
@@ -25,6 +27,7 @@ public abstract class AbstractStorageTest {
     private static final String UUID_2 = UUID.randomUUID().toString();
     private static final String UUID_3 = UUID.randomUUID().toString();
     private static final String UUID_4 = UUID.randomUUID().toString();
+
     private static final Resume R1;
     private static final Resume R2;
     private static final Resume R3;
@@ -36,6 +39,10 @@ public abstract class AbstractStorageTest {
         R3 = new Resume(UUID_3, "Name3");
         R4 = new Resume(UUID_4, "Name4");
 
+        R1.addContact(ContactType.MAIL, "mail1@mail.ru");
+        R1.addContact(ContactType.PHONE, "11111");
+        R4.addContact(ContactType.PHONE, "22222");
+        R4.addContact(ContactType.SKYPE, "Skype");
 //        R1 = getResume(UUID_1, "Name1");
 //        R2 = getResume(UUID_2, "Name2");
 //        R3 = getResume(UUID_3, "Name3");
@@ -68,8 +75,11 @@ public abstract class AbstractStorageTest {
     @Test
     public void update() throws Exception {
         Resume newResume = new Resume(UUID_1, "New Name");
+        R1.addContact(ContactType.MAIL, "mail1@ya.ru");
+        R1.addContact(ContactType.SKYPE, "NewSkype");
+        R1.addContact(ContactType.MOBILE, "+7 999 999-99-99");
         storage.update(newResume);
-        assertEquals(newResume, storage.get(UUID_1));
+        assertTrue(newResume.equals(storage.get(UUID_1)));
     }
 
     @Test(expected = NotExistStorageException.class)
