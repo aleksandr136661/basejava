@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 public class SqlStorage implements Storage {
     public final SqlHelper sqlHelper;
@@ -98,7 +99,7 @@ public class SqlStorage implements Storage {
                 Resume resume = map.get(uuid);
                 if (resume == null) {
                     resume = new Resume(uuid, rs.getString("full_name"));
-                    map.put(uuid, resume);
+                    map.computeIfAbsent(uuid, (Function<? super String, ? extends Resume>) resume);
                 }
                 addContact(rs, resume);
             }
