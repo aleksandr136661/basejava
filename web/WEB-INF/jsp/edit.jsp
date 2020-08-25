@@ -90,7 +90,8 @@
             </c:choose>
         </c:forEach>
         <button type="submit">Сохранить</button>
-        <button onclick="window.history.back()">Отменить</button>
+        <button type="button" class="btn btn-primary" onclick="window.history.back();">Отмена</button>
+
     </form>
 </section>
 <jsp:include page="fragments/footer.jsp"/>
