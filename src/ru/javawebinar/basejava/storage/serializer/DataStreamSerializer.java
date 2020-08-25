@@ -21,7 +21,7 @@ public class DataStreamSerializer implements StreamSerializer {
                 dos.writeUTF(entry.getKey().name());
                 dos.writeUTF(entry.getValue());
             });
-            // TODO implements sections
+
             writeCollection(dos, r.getSections().entrySet(), entry -> {
                 SectionType type = entry.getKey();
                 Section section = entry.getValue();
@@ -52,6 +52,7 @@ public class DataStreamSerializer implements StreamSerializer {
             });
         }
     }
+
     private void writeLocalDate(DataOutputStream dos, LocalDate ld) throws IOException {
         dos.writeInt(ld.getYear());
         dos.writeInt(ld.getMonth().getValue());
@@ -67,11 +68,10 @@ public class DataStreamSerializer implements StreamSerializer {
             String uuid = dis.readUTF();
             String fullName = dis.readUTF();
             Resume resume = new Resume(uuid, fullName);
-            readItems(dis, () -> resume.addContact(ContactType.valueOf(dis.readUTF()), dis.readUTF()));
-            // TODO implements sections
+            readItems(dis, () -> resume.setContact(ContactType.valueOf(dis.readUTF()), dis.readUTF()));
             readItems(dis, () -> {
                 SectionType sectionType = SectionType.valueOf(dis.readUTF());
-                resume.addSection(sectionType, readSection(dis, sectionType));
+                resume.setSection(sectionType, readSection(dis, sectionType));
             });
             return resume;
         }
